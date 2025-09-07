@@ -1,0 +1,67 @@
+#include <windows.h>
+#include "resource.h"
+
+//  Icons
+IDI_APPICON     ICON    "app.ico"
+
+// Tray icons
+IDI_TRAY_IDLE   ICON    "icons/idle.ico"
+IDI_TRAY_CHECK  ICON    "icons/check.ico"
+IDI_TRAY_UPDATE ICON    "icons/update.ico"
+IDI_TRAY_ERROR  ICON    "icons/error.ico"
+IDI_TRAY_CLEAN  ICON    "icons/clean.ico"
+
+// Settings
+IDD_SETTINGS        DIALOGEX    0, 0, 260, 190
+STYLE DS_MODALFRAME | DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION             "Settings"
+FONT                9,  "Segoe UI"
+BEGIN
+    CONTROL         "",                             IDC_TAB,                "SysTabControl32",
+                    WS_TABSTOP | WS_VISIBLE | WS_CHILD | WS_CLIPSIBLINGS,   6, 6, 248, 150
+
+    DEFPUSHBUTTON   "OK",                           IDOK,                   146, 162, 50, 14
+    PUSHBUTTON      "Cancel",                       IDCANCEL,               202, 162, 50, 14
+END
+
+// General page
+IDD_PAGE_GENERAL    DIALOGEX    0, 0, 240, 130
+STYLE DS_CONTROL | WS_CHILD | WS_CLIPCHILDREN
+FONT                9, "Segoe UI"
+BEGIN
+    LTEXT           "First delay (min):",           -1,                     10, 12,  90, 10
+    EDITTEXT        IDC_EDIT_FIRST_MIN,                                     110, 10, 40, 14,    ES_NUMBER | WS_TABSTOP
+
+    LTEXT           "Interval (min):",              -1,                     10, 36,  90, 10
+    EDITTEXT        IDC_EDIT_INTERVAL_MIN,                                  110, 34, 40, 14,    ES_NUMBER | WS_TABSTOP
+
+    CONTROL         "Run at startup",               IDC_CHECK_AUTOSTART,    "Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,                           10, 60, 120, 12
+END
+
+// Update Policy
+IDD_PAGE_POLICY     DIALOGEX    0, 0, 240, 130
+STYLE DS_CONTROL | WS_CHILD | WS_CLIPCHILDREN
+FONT                9, "Segoe UI"
+BEGIN
+    GROUPBOX        "Mode",                         -1,                     6,  4, 228, 30
+    CONTROL         "All apps",                     IDC_RAD_ALL,            "Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,                        14, 16, 120, 11
+    CONTROL         "Only selected apps",           IDC_RAD_CUSTOM,         "Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,                        140, 16,  90, 11
+
+    LTEXT           "Search:",                      -1,                     8, 46,  30, 10
+    EDITTEXT        IDC_EDIT_SEARCH,                                        32, 44, 110, 14,    ES_AUTOHSCROLL | WS_TABSTOP
+    PUSHBUTTON      "All",                          IDC_BTN_SELALL,         150, 44, 20, 14
+    PUSHBUTTON      "None",                         IDC_BTN_SELNONE,        172, 44, 30, 14
+    PUSHBUTTON      "Invert",                       IDC_BTN_SELINV,         204, 44, 30, 14
+
+    CONTROL         "",                             IDC_LIST_APPS,          "SysListView32",
+                    WS_TABSTOP | WS_BORDER | WS_CHILD | WS_VISIBLE | LVS_REPORT | LVS_NOCOLUMNHEADER | LVS_SHOWSELALWAYS,
+                                                                            8, 62, 228, 56
+
+    LTEXT           "Selected: 0",                  IDC_TXT_SELECTED,       8, 120, 228, 10
+END
+
+//  Manifest
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "app.manifest"
