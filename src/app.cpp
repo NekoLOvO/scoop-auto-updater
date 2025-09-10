@@ -1,6 +1,6 @@
 #include "app.h"
 
-// === Config paths ===
+// === Config ===
 static std::filesystem::path LocalConfigDir() {
     PWSTR psz = nullptr;
     if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &psz))) {
@@ -22,7 +22,7 @@ std::filesystem::path ConfigPath() {
     return LocalConfigDir() / L"config.ini";
 }
 
-// === Autostart via Startup shortcut ===
+// === Autostart ===
 static const wchar_t        *AUTOSTART_SHORTCUT = L"Scoop Auto Updater.lnk";
 
 static std::filesystem::path StartupFolder() {

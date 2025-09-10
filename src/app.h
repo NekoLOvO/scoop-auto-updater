@@ -35,7 +35,6 @@ struct App {
         void                             Cycle();
 };
 
-// utilities used by App & UI
 std::filesystem::path     ConfigPath();
 void                      LoadConfig(App &app);
 void                      SaveConfig(const App &app);
@@ -44,6 +43,5 @@ bool                      EnableAutostart();
 void                      DisableAutostart();
 std::vector<std::wstring> ScanScoopApps();
 
-// PowerShell runners
 PSResult                  RunPowerShell(const std::wstring &command);
 bool                      RunOK(const std::wstring &cmd);

@@ -1,17 +1,14 @@
 #include <windows.h>
 #include "resource.h"
 
-//  Icons
 IDI_APPICON     ICON    "app.ico"
 
-// Tray icons
 IDI_TRAY_IDLE   ICON    "icons/idle.ico"
 IDI_TRAY_CHECK  ICON    "icons/check.ico"
 IDI_TRAY_UPDATE ICON    "icons/update.ico"
 IDI_TRAY_ERROR  ICON    "icons/error.ico"
 IDI_TRAY_CLEAN  ICON    "icons/clean.ico"
 
-// Settings
 IDD_SETTINGS        DIALOGEX    0, 0, 260, 190
 STYLE DS_MODALFRAME | DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION             "Settings"
@@ -24,7 +21,6 @@ BEGIN
     PUSHBUTTON      "Cancel",                       IDCANCEL,               202, 162, 50, 14
 END
 
-// General page
 IDD_PAGE_GENERAL    DIALOGEX    0, 0, 240, 130
 STYLE DS_CONTROL | WS_CHILD | WS_CLIPCHILDREN
 FONT                9, "Segoe UI"
@@ -39,7 +35,6 @@ BEGIN
                     BS_AUTOCHECKBOX | WS_TABSTOP,                           10, 60, 120, 12
 END
 
-// Update Policy
 IDD_PAGE_POLICY     DIALOGEX    0, 0, 240, 130
 STYLE DS_CONTROL | WS_CHILD | WS_CLIPCHILDREN
 FONT                9, "Segoe UI"
@@ -63,5 +58,4 @@ BEGIN
     LTEXT           "Selected: 0",                  IDC_TXT_SELECTED,       8, 120, 228, 10
 END
 
-//  Manifest
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "app.manifest"

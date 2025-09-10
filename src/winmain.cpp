@@ -1,6 +1,5 @@
 #include "ui/pages.h"
 
-// helper: Load HICON from resource id
 static HICON LoadResIcon(HINSTANCE h, int id, int cx = 0, int cy = 0) {
     return (HICON)
             LoadImageW(h, MAKEINTRESOURCEW(id), IMAGE_ICON, cx, cy, cx || cy ? 0 : LR_DEFAULTSIZE);
@@ -20,7 +19,6 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
             if (!app->autostart && IsAutostartEnabled())
                 DisableAutostart();
 
-            // tray init
             app->nid                  = {};
             app->nid.cbSize           = sizeof(app->nid);
             app->nid.hWnd             = hwnd;
@@ -122,7 +120,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int) {
     App app{};
     app.hInst             = hInstance;
 
-    // load all tray icons from resources (ICO), no GDI+
     app.icoIdle           = LoadResIcon(hInstance, IDI_TRAY_IDLE);
     app.icoCheck          = LoadResIcon(hInstance, IDI_TRAY_CHECK);
     app.icoUpdate         = LoadResIcon(hInstance, IDI_TRAY_UPDATE);

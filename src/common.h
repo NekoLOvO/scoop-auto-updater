@@ -30,7 +30,6 @@
 
 #include "resource.h"
 
-// Rounded corners helper
 #ifndef DWMWA_WINDOW_CORNER_PREFERENCE
 #    define DWMWA_WINDOW_CORNER_PREFERENCE 33
 #endif
@@ -52,10 +51,8 @@ static inline void PreferRoundedCorners(HWND hwnd) {
     FreeLibrary(hDwm);
 }
 
-// App constants
 static const wchar_t      *APP_NAME      = L"Scoop Auto Updater";
 
-// Tray + menu IDs
 static const UINT          WM_TRAYICON   = WM_APP + 1;
 static const UINT          ID_TRAY       = 100;
 static const UINT          IDM_CHECK_NOW = 1001;
@@ -63,10 +60,8 @@ static const UINT          IDM_CLEANUP   = 1002;
 static const UINT          IDM_SETTINGS  = 1005;
 static const UINT          IDM_EXIT      = 1004;
 
-// Page save message
 static const UINT          UM_PAGE_SAVE  = WM_APP + 100;
 
-// Helpers
 static inline std::wstring ToLower(std::wstring s) {
     std::transform(s.begin(), s.end(), s.begin(), [](wchar_t c) {
         return (wchar_t)::towlower((wint_t)c);
